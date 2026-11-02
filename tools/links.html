@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Owled · Link Maker</title>
+<style>
+  :root { --bg: #120a2a; --card: #1d1145; --line: rgba(255,243,220,.15); --text: #fff3dc; --muted: rgba(255,243,220,.65); --accent: #f5a524; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #120a2a; } }
+  :root[data-theme="dark"] { --bg: #120a2a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px 60px; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 24px; }
+  p { color: var(--muted); margin: 0 0 18px; }
+  label { display: block; margin: 14px 0 6px; font-weight: 600; }
+  input, textarea, select { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; }
+  textarea { min-height: 160px; font-family: ui-monospace, monospace; font-size: 13px; }
+  button { margin-top: 16px; padding: 11px 20px; border: 0; border-radius: 99px; background: var(--accent); color: #140c22; font-weight: 700; cursor: pointer; }
+  table { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 13px; }
+  td, th { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; word-break: break-all; }
+  td button { margin: 0; padding: 6px 12px; font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Link maker</h1>
+  <p>One name per line: <code>First Last, clientId</code>. The client id is optional and must match a key in <code>data/clients.js</code>.</p>
+  <label for="base">Site address (where the invite is hosted)</label>
+  <input id="base" placeholder="https://your-site.pages.dev/">
+  <label for="list">Guests</label>
+  <textarea id="list" placeholder="Riya Shah, acme&#10;Kabir Mehta, zest&#10;Ananya Iyer"></textarea>
+  <button id="make" type="button">make links</button>
+  <table id="out" hidden><thead><tr><th>name</th><th>link</th><th></th></tr></thead><tbody></tbody></table>
+</main>
+<script>
+  const base = document.getElementById('base'), list = document.getElementById('list'), out = document.getElementById('out'), tb = out.querySelector('tbody');
+  try { base.value = localStorage.getItem('ow:base') || new URL('../', location.href).href; } catch (e) { base.value = ''; }
+  document.getElementById('make').addEventListener('click', () => {
+    try { localStorage.setItem('ow:base', base.value); } catch (e) {}
+    const root = base.value.trim().replace(/\/?$/, '/');
+    tb.replaceChildren();
+    list.value.split('\n').map(l => l.trim()).filter(Boolean).forEach(line => {
+      const [name, client] = line.split(',').map(s => (s || '').trim());
+      const u = new URL(root); u.searchParams.set('name', name); if (client) u.searchParams.set('c', client.toLowerCase());
+      const tr = document.createElement('tr');
+      const a = document.createElement('td'); a.textContent = name + (client ? ` (${client})` : '');
+      const b = document.createElement('td'); b.textContent = u.href;
+      const c = document.createElement('td'); const btn = document.createElement('button'); btn.textContent = 'copy';
+      btn.addEventListener('click', async () => { try { await navigator.clipboard.writeText(u.href); btn.textContent = 'copied'; } catch (e) { btn.textContent = 'select it'; } });
+      c.appendChild(btn); tr.append(a, b, c); tb.appendChild(tr);
+    });
+    out.hidden = !tb.children.length;
+  });
+</script>
+</body>
+</html>

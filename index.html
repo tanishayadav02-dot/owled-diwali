@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Owled Media · Happy Diwali</title>
+<meta name="description" content="A Diwali wish from Owled Media. Light five diyas, then step into the Owled mela.">
+<meta property="og:title" content="Aapke liye ek diya 🪔 · Owled Media">
+<meta property="og:description" content="Light five diyas, then step into the Owled mela.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="theme-color" content="#120a2a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>try { history.scrollRestoration = 'manual'; } catch (e) {} window.scrollTo(0, 0);</script>
+</head>
+<body class="locked">
+
+<!-- ═════════ loader: paints first, waits for fonts, then asks for one real tap (unlocks sound on phones) ═════════ -->
+<div id="ldr" role="status" aria-live="polite">
+  <div class="l-in">
+    <svg class="l-owl" viewBox="0 0 120 80" aria-hidden="true">
+      <circle cx="38" cy="40" r="26" fill="#fff3dc"/><circle cx="82" cy="40" r="26" fill="#fff3dc"/>
+      <circle class="l-pupil" cx="40" cy="42" r="11" fill="#140c22"/><circle class="l-pupil" cx="80" cy="42" r="11" fill="#140c22"/>
+      <path d="M54 58 L60 70 L66 58 Z" fill="#f5a524"/>
+      <rect class="l-lid" x="8" y="10" width="104" height="0" fill="#120a2a"/>
+    </svg>
+    <p class="l-t" id="ldrT">your diwali wish is on its way</p>
+    <div class="l-bar"><i id="ldrBar"></i></div>
+    <p class="l-s" id="ldrS">waking up the owl…</p>
+    <input class="l-name" id="ldrName" type="text" autocomplete="given-name" placeholder="your name" maxlength="32" aria-label="your name" hidden>
+    <button class="l-go" id="ldrGo" type="button" hidden>open my wish 🪔</button>
+  </div>
+</div>
+
+<!-- ═════════ the scene: the owl hands you a flame, you light five diyas, each one shows a number ═════════ -->
+<section id="scene" aria-label="Light the diyas">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="toran" id="toran" aria-hidden="true"></div>
+
+  <div class="owl-wrap" id="owlWrap" aria-hidden="true">
+    <svg class="owl" id="owl" viewBox="0 0 200 220">
+      <defs>
+        <radialGradient id="gBelly" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#ffe2a8"/><stop offset="1" stop-color="#f0b45a"/></radialGradient>
+        <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5cff"/><stop offset="1" stop-color="#4a2aa8"/></linearGradient>
+        <clipPath id="eyeClip"><circle cx="68" cy="82" r="28"/><circle cx="132" cy="82" r="28"/></clipPath>
+      </defs>
+      <path class="ear l" d="M52 52 L40 8 L82 38 Z" fill="#5b36c9"/>
+      <path class="ear r" d="M148 52 L160 8 L118 38 Z" fill="#5b36c9"/>
+      <ellipse cx="100" cy="120" rx="72" ry="86" fill="url(#gBody)"/>
+      <path class="wing l" d="M34 110 C 10 140, 18 190, 54 196 C 46 170, 44 140, 50 112 Z" fill="#3c1f8f"/>
+      <path class="wing r" d="M166 110 C 190 140, 182 190, 146 196 C 154 170, 156 140, 150 112 Z" fill="#3c1f8f"/>
+      <ellipse cx="100" cy="150" rx="44" ry="50" fill="url(#gBelly)"/>
+      <g fill="none" stroke="#d48a2c" stroke-width="3" stroke-linecap="round" opacity=".7">
+        <path d="M82 132 q6 6 12 0"/><path d="M106 132 q6 6 12 0"/><path d="M76 150 q6 6 12 0"/><path d="M94 150 q6 6 12 0"/><path d="M112 150 q6 6 12 0"/><path d="M86 168 q6 6 12 0"/><path d="M104 168 q6 6 12 0"/>
+      </g>
+      <circle cx="68" cy="82" r="30" fill="#fff3dc"/><circle cx="132" cy="82" r="30" fill="#fff3dc"/>
+      <circle cx="68" cy="82" r="30" fill="none" stroke="#f5a524" stroke-width="5"/><circle cx="132" cy="82" r="30" fill="none" stroke="#f5a524" stroke-width="5"/>
+      <g id="pupils"><circle id="pL" cx="68" cy="84" r="13" fill="#140c22"/><circle id="pR" cx="132" cy="84" r="13" fill="#140c22"/>
+        <circle id="gL" cx="63" cy="79" r="4" fill="#fff"/><circle id="gR" cx="127" cy="79" r="4" fill="#fff"/></g>
+      <g id="lids" clip-path="url(#eyeClip)"><rect id="lidL" x="36" y="50" width="64" height="0" fill="#5b36c9"/><rect id="lidR" x="100" y="50" width="64" height="0" fill="#5b36c9"/></g>
+      <path d="M92 104 L100 122 L108 104 Z" fill="#f5a524"/>
+      <path d="M84 204 l-6 12 M92 204 l0 13 M100 204 l6 12 M108 204 l-6 12 M116 204 l0 13 M124 204 l6 12" stroke="#f5a524" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <div class="diya src" id="src"><i class="bowl"></i><i class="fl"></i></div>
+  </div>
+
+  <div class="diyas" id="diyas"></div>
+
+  <canvas id="fxc" aria-hidden="true"></canvas>
+  <canvas id="night" aria-hidden="true"></canvas>
+  <div class="carry" id="carry" aria-hidden="true"><i class="fl"></i></div>
+
+  <div class="greet" id="greet">
+    <p class="g-kick" id="gKick"></p>
+    <h1 class="g-title" id="gTitle"></h1>
+    <p class="g-lede" id="gLede"></p>
+    <p class="g-note" id="gNote" hidden></p>
+    <button class="btn gold" id="toMela" type="button">enter the mela ↓</button>
+  </div>
+
+  <div class="bottom">
+    <p class="cap" id="cap" aria-live="polite"></p>
+    <button class="auto" id="auto" type="button" hidden></button>
+  </div>
+</section>
+
+<!-- ═════════ after the reveal ═════════ -->
+<main id="mela">
+  <section class="nums" aria-label="Our year in numbers">
+    <h2 class="sec-t">our year, in diyas</h2>
+    <div class="num-grid" id="numGrid"></div>
+  </section>
+
+  <section class="foryou" id="forYou" hidden>
+    <h2 class="sec-t" id="forYouT"></h2>
+    <div class="rail" id="forYouRail"></div>
+  </section>
+
+  <section class="stalls" id="stalls">
+    <h2 class="sec-t" id="melaT"></h2>
+    <p class="sec-s" id="melaS"></p>
+    <div class="stall-row" id="stallRow" role="tablist"></div>
+    <div class="booth" id="booth">
+      <div class="booth-head"><h3 id="boothT"></h3><p id="boothS"></p></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="outro">
+    <h2 class="sec-t" id="outroT"></h2>
+    <p class="sec-s" id="outroL"></p>
+    <div class="outro-btns">
+      <a class="btn gold" id="wishWa" href="#" target="_blank" rel="noopener">send us a wish back</a>
+      <button class="btn pink" id="shareBtn" type="button">share my diya card</button>
+      <a class="btn ghost" id="mailBtn" href="#">let’s make 2027 together</a>
+    </div>
+    <button class="linkish" id="replay" type="button">↺ light the diyas again</button>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-tick"><div class="row" id="tick"></div></div>
+    <p class="foot-by"><b id="footBrand"></b> · <span id="footTag"></span></p>
+  </footer>
+</main>
+
+<!-- work detail -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="m-card">
+    <button class="m-x" id="mX" type="button" aria-label="Close">×</button>
+    <div class="m-cover" id="mCover"></div>
+    <div class="m-body">
+      <p class="m-kick" id="mKick"></p>
+      <h3 id="mTitle"></h3>
+      <p class="m-meta" id="mMeta"></p>
+      <p class="m-blurb" id="mBlurb"></p>
+      <div class="m-acts"><a class="btn gold" id="mWatch" href="#" target="_blank" rel="noopener">watch it</a></div>
+    </div>
+    <button class="m-nav prev" id="mPrev" type="button" aria-label="Previous">‹</button>
+    <button class="m-nav next" id="mNext" type="button" aria-label="Next">›</button>
+  </div>
+</div>
+
+<button class="snd" id="snd" type="button" aria-label="Sound on" hidden>
+  <svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="w" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+</button>
+
+<script src="data/site.js"></script>
+<script src="data/work.js"></script>
+<script src="data/clients.js"></script>
+<script src="js/core.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/mela.js"></script>
+<script src="js/share.js"></script>
+</body>
+</html>
