@@ -44,9 +44,9 @@ window.OWLED = {
 
   // stall order = the order they appear in the mela. `id` must match work.js `cat`.
   stalls: [
+    { id: 'campaigns', name: 'campaign patakhe',   sub: 'launches that went boom',            color: '#2bb5a3', icon: 'rocket' },
     { id: 'reels',     name: 'reels ki rangoli',   sub: 'short-form that stopped the scroll', color: '#e4407b', icon: 'rangoli' },
     { id: 'films',     name: 'brand film talkies', sub: 'long-form, big screen energy',       color: '#f5a524', icon: 'reel' },
-    { id: 'campaigns', name: 'campaign patakhe',   sub: 'launches that went boom',            color: '#2bb5a3', icon: 'rocket' },
     { id: 'creators',  name: 'creator chaupal',    sub: 'influencer collabs that clicked',    color: '#7b5cff', icon: 'chat' },
     { id: 'design',    name: 'design ki dukaan',   sub: 'posts, carousels, key art',          color: '#ff7a2f', icon: 'brush' },
   ],

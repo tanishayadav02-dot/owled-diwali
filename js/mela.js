@@ -57,7 +57,7 @@ function card(w, list) {
   b.setAttribute('aria-label', `${w.title}, ${w.client}${w.views ? ', ' + fmt(w.views) + ' views' : ''}`);
   const m = document.createElement('div'); m.className = 'meta';
   const t = document.createElement('b'); t.textContent = w.title;
-  const row = document.createElement('span'); const cl = document.createElement('span'); cl.textContent = `${w.client} · ${w.month}`;
+  const row = document.createElement('span'); const cl = document.createElement('span'); cl.textContent = [w.client, w.month].filter(Boolean).join(" · ");
   row.appendChild(cl);
   if (w.views) { const v = document.createElement('span'); v.className = 'v'; v.textContent = `👁 ${fmt(w.views)}`; row.appendChild(v); }
   m.append(t, row); b.append(cover(w), m);

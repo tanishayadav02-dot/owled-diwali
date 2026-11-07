@@ -20,6 +20,9 @@ window.OWLED_WORK = [
   { id: 'w11', cat: 'films', title: 'founders, unfiltered', client: 'PaisaPal', platform: 'linkedin', month: 'sep', views: 410000, tall: false, thumb: '', link: '', blurb: 'the brand story, told by the people who built it.' },
   { id: 'w12', cat: 'films', title: 'one kitchen, three generations', client: 'Nimbu Tea', platform: 'youtube', month: 'sep', views: 1900000, tall: false, thumb: '', link: '', blurb: 'recipes as heirlooms.' },
 
+  // top of the first stall. ADD: platform, month, views, thumb, link, blurb
+  { id: 'senco', cat: 'campaigns', title: 'the wamiqa film', client: 'Senco Gold & Diamonds', platform: '', month: '', views: 0, tall: false, thumb: '', link: '', blurb: '' },
+  { id: 'supermoney', cat: 'campaigns', title: 'rebel kid × super.money', client: 'super.money', platform: '', month: '', views: 0, tall: false, thumb: '', link: '', blurb: '' },
   { id: 'w13', cat: 'campaigns', title: '#chaiwithstrangers', client: 'Nimbu Tea', platform: 'multi', month: 'apr', views: 7800000, tall: false, thumb: '', link: '', blurb: 'a street activation that ran for 21 days online.' },
   { id: 'w14', cat: 'campaigns', title: 'the 1 rupee sale', client: 'Giftly', platform: 'multi', month: 'may', views: 3100000, tall: false, thumb: '', link: '', blurb: 'teasers, a countdown, a crashed (then fixed) site.' },
   { id: 'w15', cat: 'campaigns', title: 'festive pantry drop', client: 'Acme Foods', platform: 'multi', month: 'oct', views: 2300000, tall: false, thumb: '', link: '', blurb: 'launch film, 14 reels, 6 creators, one hamper.' },
