@@ -43,7 +43,7 @@
     tb.replaceChildren();
     list.value.split('\n').map(l => l.trim()).filter(Boolean).forEach(line => {
       const [name, client] = line.split(',').map(s => (s || '').trim());
-      const u = new URL(root); u.searchParams.set('name', name); if (client) u.searchParams.set('c', client.toLowerCase());
+      const u = new URL(root); const h = new URLSearchParams({ name }); if (client) h.set('c', client.toLowerCase()); u.hash = h.toString();   // # survives host redirects; ?name= works too
       const tr = document.createElement('tr');
       const a = document.createElement('td'); a.textContent = name + (client ? ` (${client})` : '');
       const b = document.createElement('td'); b.textContent = u.href;

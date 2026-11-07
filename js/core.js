@@ -7,8 +7,14 @@ const store = {
   set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} },
 };
 
-/* ── the guest: ?name=Riya+Shah&c=acme ── */
+/* ── the guest: ?name=Riya+Shah&c=acme  (or #name=Riya+Shah&c=acme, or just #Riya — the part after # survives host redirects) ── */
 const qs = new URLSearchParams(location.search);
+const hash = decodeURIComponent(location.hash.slice(1).replace(/\+/g, ' '));
+if (hash && !qs.get('name')) {
+  const hq = new URLSearchParams(location.hash.slice(1));
+  if (hq.get('name')) { qs.set('name', hq.get('name')); if (hq.get('c')) qs.set('c', hq.get('c')); }
+  else if (!hash.includes('=')) qs.set('name', hash);
+}
 const nice = v => String(v || '').trim().replace(/\s+/g, ' ').slice(0, 32).replace(/(^|\s)(\p{Ll})/gu, (m, a, b) => a + b.toUpperCase());
 const guest = {
   full: nice(qs.get('name')),

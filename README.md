@@ -16,6 +16,8 @@ No framework and no build step: plain HTML, CSS and JavaScript, and all sound is
 ```
 index.html?name=Riya+Shah            → "happy diwali, Riya"
 index.html?name=Riya+Shah&c=acme     → plus Acme's note and their picks first
+index.html#Riya                      → same as ?name=Riya (the # form survives host redirects, so it is the safest)
+index.html#name=Riya+Shah&c=acme     → # form with a client
 index.html                           → asks for a name on the loader
 ```
 
