@@ -288,7 +288,7 @@ Promise.race([Promise.all([fontsReady, loaded]), sleep(6000)]).then(async () => 
     sndBtn.hidden = false; fillGreeting(); measure();
     ST.ph = 'play'; ST.idle = 0; progressCap(); track('open');
   };
-  if (!guest.full) {   // a bare link: ask their name so the owl knows who it's lighting up for
+  if (!guest.full && S.askName) {   // a bare link: ask their name (only if site.js → askName is true) so the owl knows who it's lighting up for
     nameIn.hidden = false; nameIn.focus({ preventScroll: true });
     const named = () => {
       const n = nameIn.value.trim().replace(/\s+/g, ' ').slice(0, 32);

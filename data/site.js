@@ -12,7 +12,8 @@ window.OWLED = {
     site: 'https://owled.media',          // PLACEHOLDER
   },
 
-  defaultName: 'dost',
+  defaultName: 'dost',   // used when the link has no name
+  askName: false,        // true = a link without a name shows a box asking for it
 
   copy: {
     loader: '{name}, your diwali wish is on its way',
