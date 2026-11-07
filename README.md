@@ -19,7 +19,7 @@ index.html?name=Riya+Shah&c=acme     → plus Acme's note and their picks first
 index.html                           → asks for a name on the loader
 ```
 
-Make links in bulk with `tools/links.html`: paste one `Name, clientId` per line.
+To send one: open `tools/links.html` (the send page), type the person's name, optionally pick their company, and tap **Send on WhatsApp**. WhatsApp opens with the message and their personal link, and you pick the contact. "Many people at once" makes a WhatsApp button per name from a pasted list (`Name, company` per line).
 
 ## Where to edit (no code needed)
 
