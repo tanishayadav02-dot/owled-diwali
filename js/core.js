@@ -13,7 +13,7 @@ const hash = decodeURIComponent(location.hash.slice(1).replace(/\+/g, ' '));
 if (hash && !qs.get('name')) {
   const hq = new URLSearchParams(location.hash.slice(1));
   if (hq.get('name')) { qs.set('name', hq.get('name')); if (hq.get('c')) qs.set('c', hq.get('c')); }
-  else if (!hash.includes('=')) qs.set('name', hash);
+  else if (!hash.includes('=')) qs.set('name', hash.replace(/[-_]+/g, ' '));   // #Riya-Shah → "Riya Shah"
 }
 const nice = v => String(v || '').trim().replace(/\s+/g, ' ').slice(0, 32).replace(/(^|\s)(\p{Ll})/gu, (m, a, b) => a + b.toUpperCase());
 const guest = {
